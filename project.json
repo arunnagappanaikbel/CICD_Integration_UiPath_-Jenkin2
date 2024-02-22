@@ -14,7 +14,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.4.0",
-  "projectVersion": "1.0.162286257",
+  "projectVersion": "1.0.162294983",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -43,7 +43,14 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "16924428-c4b4-47e9-8351-35d8e0e84d13",
+        "testCaseType": "TestCase",
+        "fileName": "Test_Case1.xaml"
+      }
+    ],
     "modernBehavior": true,
     "saveToCloud": false
   },
