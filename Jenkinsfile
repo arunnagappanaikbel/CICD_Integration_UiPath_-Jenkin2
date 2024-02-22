@@ -38,7 +38,7 @@ pipeline {
 	                echo "Building package with ${WORKSPACE}"
 	                UiPathPack (
 	                      outputPath: "C:\\Users\\arnaik2\\OneDrive - Cisco\\Documents\\UiPath\\Salesforce_POC_Relanto\\Output\\${env.BUILD_NUMBER}",
-			      outputType: 'Tests',
+						  outputType: 'Tests',
 	                      projectJsonPath: "project.json",
 	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
 	                      useOrchestrator: false,
@@ -59,9 +59,8 @@ pipeline {
 	                environments: '',
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-			traceLevel: 'None',
-			createProcess: true,
-			entryPointPaths: 'Main.xaml'
+					traceLevel: 'None',
+					entryPointPaths: 'Main.xaml'
 	
 
 					)
