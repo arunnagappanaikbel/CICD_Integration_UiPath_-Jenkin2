@@ -30,6 +30,47 @@ pipeline {
 
 	            }
 	        }
+
+
+   // Building Tests
+	        stage('Build Tests') {
+	            steps {
+	                echo "Building package with ${WORKSPACE}"
+	                UiPathPack (
+	                      outputPath: "C:\\Users\\arnaik2\\OneDrive - Cisco\\Documents\\UiPath\\Salesforce_POC_Relanto\\Output\\${env.BUILD_NUMBER}",
+			      outputType: 'Tests',
+	                      projectJsonPath: "project.json",
+	                      version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
+	                      useOrchestrator: false,
+						  traceLevel: 'None'
+						)
+	            }
+	        }
+			
+	         // Deploy Stages
+	        stage('Deploy Tests') {
+	            steps {
+	                echo "Deploying ${BRANCH_NAME} to orchestrator"
+	                UiPathDeploy (
+	                packagePath: "C:\\Users\\arnaik2\\OneDrive - Cisco\\Documents\\UiPath\\Salesforce_POC_Relanto\\Output\\${env.BUILD_NUMBER}",
+	                orchestratorAddress: "${UIPATH_ORCH_URL}",
+	                orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+	                folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+	                environments: '',
+	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
+	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+			traceLevel: 'None',
+			createProcess: true,
+			entryPointPaths: 'Main.xaml'
+	
+
+					)
+	            }
+			
+			}
+
+
+
 	        
 			stage('Build') {
       steps {
