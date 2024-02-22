@@ -60,6 +60,7 @@ pipeline {
 	                //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: 'APIUserKey']
 	                credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
 					traceLevel: 'None',
+					createProcess: true,
 					entryPointPaths: 'Main.xaml'
 	
 
@@ -71,7 +72,7 @@ pipeline {
 
 
 	        
-			stage('Build') {
+			stage('Build Process') {
       steps {
         echo "Building..with ${WORKSPACE}"
         UiPathPack(
@@ -89,7 +90,7 @@ pipeline {
       }
     }
 
-stage('Deploy to UAT') {
+stage('DeployProcess to Test Folder') {
       steps {
         echo "Deploying ${BRANCH_NAME} to UAT "
         UiPathDeploy(
@@ -110,12 +111,6 @@ stage('Deploy to UAT') {
     }
 
 
-	         // Deploy to Production Step
-	        stage('Deploy to Production') {
-	            steps {
-	                echo 'Deploy to Production'
-	                }
-	            }
 	    }
 	
 
