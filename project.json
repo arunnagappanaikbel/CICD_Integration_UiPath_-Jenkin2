@@ -43,7 +43,14 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "Publishable",
+        "testCaseId": "fba4a3c5-0a00-46a4-8ed5-07faa70d5ddd",
+        "testCaseType": "TestCase",
+        "fileName": "Test_Cases1.xaml"
+      }
+    ],
     "modernBehavior": true,
     "saveToCloud": false
   },
